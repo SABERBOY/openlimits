@@ -10,13 +10,13 @@ use openlimits::{
 use openlimits_exchange::exchange::Environment;
 
 pub async fn init_ws() -> BinanceWebsocket {
-    BinanceWebsocket::new(BinanceParameters::production())
+    BinanceWebsocket::new(get_binance_parameters()/*BinanceParameters::production()*/)
         .await
         .expect("Failed to create Binance stream.")
 }
 
 pub async fn init() -> Binance {
-    Binance::new(BinanceParameters::sandbox())
+    Binance::new(get_binance_parameters()/*BinanceParameters::sandbox()*/)
         .await
         .expect("Failed to create Client")
 }
@@ -35,4 +35,16 @@ pub async fn init_signed() -> Binance {
     OpenLimits::instantiate(parameters)
         .await
         .expect("Failed to create Client")
+}
+
+pub fn get_binance_parameters() ->BinanceParameters{
+    dotenv().ok();
+
+    return  BinanceParameters {
+        credentials: Some(BinanceCredentials {
+            api_key:    std::env::var("BINANCE_API_KEY").expect("Couldn't get environment variable."),
+            api_secret: std::env::var("BINANCE_API_SECRET").expect("Couldn't get environment variable."),
+        }),
+        environment: Environment::Sandbox,
+    };
 }
