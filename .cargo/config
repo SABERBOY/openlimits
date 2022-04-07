@@ -1,2 +1,5 @@
 [target.x86_64-apple-darwin.gmp]
 rustc-link-search = ["/opt/homebrew/lib/libgmp.a"]
+[target.x86_64-pc-windows-msvc.gmp]
+rustc-link-lib = ["gmp.lib"]
+rustc-link-search = ["C:/Users/11322/Documents/GitHub/vcpkg/installed/x64-windows/lib"]

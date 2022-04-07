@@ -7,3 +7,4 @@ mod binance;
 mod coinbase;
 mod nash;
 // mod old_nash_tests;
+mod ftx;

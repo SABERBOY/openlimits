@@ -34,7 +34,7 @@ rust_decimal = "1.14.3"
 tokio = { version = "1.0", features = ["full"] }
 futures = "0.3"
 dotenv = "0.15.0"
-ftx = "0.3"
+ftx = { git = "https://github.com/fabianboesiger/ftx", branch = "main" }
 
 [build-dependencies]
 # ligen        = { path = "../../sensorial/systems/ligen/ligen", optional = true }
